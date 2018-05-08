@@ -1,11 +1,11 @@
-import { AbstractControlState, computeArrayState, FormArrayState } from '../state';
-import { ProjectFn2 } from './util';
+import {AbstractControlState, computeArrayState, FormArrayState} from '../state';
+import {ProjectFn2} from './util';
 
 function updateArrayControlsState<TValue>(updateFn: ProjectFn2<AbstractControlState<TValue>, FormArrayState<TValue>>) {
   return (state: FormArrayState<TValue>) => {
     let hasChanged = false;
-    const newControls = state.controls.map(control => {
-      const newControl = updateFn(control, state);
+    const newControls = state.controls.map((control, index) => {
+      const newControl = updateFn(control, state, index);
       hasChanged = hasChanged || newControl !== control;
       return newControl;
     });

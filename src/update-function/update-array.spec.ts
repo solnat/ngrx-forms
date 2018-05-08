@@ -82,6 +82,15 @@ describe(updateArray.name, () => {
     })(state);
   });
 
+  it('should pass the index as the third parameter', () => {
+    const state = createFormArrayState(FORM_CONTROL_ID, ['', '']);
+    let loopCount = 0;
+    updateArray<typeof state.value[0]>((c, p, i) => {
+      expect(i).toBe(loopCount++);
+      return c;
+    })(state);
+  });
+
   it('should work inside of an updateGroup', () => {
     interface Outer {
       inner: Inner[];

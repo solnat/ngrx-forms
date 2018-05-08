@@ -6,7 +6,7 @@ import { formGroupReducer } from '../group/reducer';
 import { AbstractControlState, isArrayState, isGroupState } from '../state';
 
 export type ProjectFn<T> = (t: T) => T;
-export type ProjectFn2<T, K> = (t: T, k: K) => T;
+export type ProjectFn2<T, K> = (t: T, k: K, i?: number) => T;
 
 export function abstractControlReducer<TValue>(state: AbstractControlState<TValue>, action: Action): AbstractControlState<TValue> {
   if (isArrayState(state)) {
